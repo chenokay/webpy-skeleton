@@ -49,8 +49,8 @@ t_globals['render'] = lambda t, *args: render._template(t)(*args)
 
 class Index:
     def GET(self):
-        flash("success", """Welcome! Application code lives in app.py,
-        models in model.py, tests in test.py, and seed data in seed.py.""")
+        #flash("success", """Welcome! Application code lives in app.py,
+        #models in model.py, tests in test.py, and seed data in seed.py.""")
         return render.index()
 
 

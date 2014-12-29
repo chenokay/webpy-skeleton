@@ -1,51 +1,41 @@
 $def with (content)
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+<meta charset='utf-8'>
 
-    <title>$content.get('title')</title>
+<link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/static/css/pygment_trac.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/static/css/print.css" media="print" />
 
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/app.css">
+<title>$content.get('title')</title>
+<!-- <title>index</title>-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<header>
+<div class="inner">
+<h2>润土网，为你的环境保护而生</h2>
+<h3>中国第一环保器械测评</h3>
+<a href="https://www.baidu.cn" class="button"><small>RainToo</small></a>
+</div>
+</header>
 
-    <link rel="shortcut icon" href="/static/favico.ico">
-  </head>
-  <body>
-     <div class="navbar navbar-inverse navbar-fixed-top">
-       <div class="container">
-         <div class="navbar-header">
-           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">润土网，为你的环境保护而生</a>
-         </div>
-         <div class="collapse navbar-collapse">
-           <ul class="nav navbar-nav">
-             <li class="active"><a href="#">精挑细选</a></li>
-             <li><a href="#about">专业测评</a></li>
-			 <!-- <li><a href="#contact">Contact</a></li> -->
-           </ul>
-         </div><!--/.nav-collapse -->
-       </div>
-     </div>
+<div id="content-wrapper">
+<div class="inner clearfix">
 
-     <div class="container">
-       $:render('flash_messages', 'success')
-       $:render('flash_messages', 'error')
-       
-       $:content
-    </div> <!-- /container -->
+<section id="main-content">
 
-    <script src="/static/js/jquery.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-    <script src="/static/js/app.js"></script>
-  </body>
+$:content
+
+</section>
+<aside id="sidebar">
+<p><a href="http://www.baidu.cn">欢迎来自北京的朋友</a></p>
+<p>天气晴空万里</p>
+<p>雾霾150</p>
+</aside>
+</div>
+</div>
+</body>
 </html>

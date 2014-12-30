@@ -1,9 +1,13 @@
+# -*- coding: UTF-8 -*-
 from collections import defaultdict
 
 import web
 
 import config
 import model as m
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 VERSION = "0.0.1"
@@ -48,10 +52,18 @@ t_globals['render'] = lambda t, *args: render._template(t)(*args)
 
 
 class Index:
+    def __init__(self):
+        self.ip2region = "http://apistore.baidu.com/microservice/iplookup?ip="
+        self.region2code = "http://apistore.baidu.com/microservice/cityinfo?cityname="
+        self.code2weather = "http://apistore.baidu.com/microservice/weather?cityid="
+        self.region2aqi = "http://apistore.baidu.com/microservice/aqi?city="
+
+    def get_region(self, ip):
+        
     def GET(self):
         #flash("success", """Welcome! Application code lives in app.py,
         #models in model.py, tests in test.py, and seed data in seed.py.""")
-        return render.index()
+        return render.index("北京", "晴空万里", "良")
 
 
 # Set a custom internal error message

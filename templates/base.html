@@ -4,7 +4,8 @@ $def with (content)
 <head>
 <meta charset='utf-8'>
 
-<link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+<!--<link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet'
+type='text/css'> --!>
 <link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="/static/css/pygment_trac.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="/static/css/print.css" media="print" />
@@ -16,9 +17,11 @@ $def with (content)
 <body>
 <header>
 <div class="inner">
-<h2>润土网，为你的健康而生</h2>
-<h3>为消费者代言</h3>
-<a href="https://www.baidu.cn" class="button"><small>RainToo</small></a>
+<h2>润土网-为你的健康而生</h2>
+<!--<h3>为消费者代言</h3>!-->
+<h3>  </h3>
+<!--<a href="" class="button"><small></small>为消费者代言</a>--!>
+<a class="button" style="font-size:18px;">为消费者代言</a>
 </div>
 </header>
 
@@ -31,7 +34,8 @@ $:content
 
 </section>
 <aside id="sidebar">
-<p><a href="http://www.baidu.cn">欢迎来自$:content.region的朋友</a></p>
+<!--<p><a href="">欢迎来自$:content.region的朋友</a></p>--!>
+<p>欢迎来自$:content.region的朋友</p>
 <p>$:content.weather</p>
 <p>空气质量:$content.air_condition</p>
 </aside>

@@ -207,8 +207,8 @@ class Index:
             config.logger.warn('fail to init environment [%s][%s]', self.ip, ret)
         else:
             region = self.region
-            weather = self.weather + ' ' + self.centigrade
-            aqi = str(self.aqi) + ' ' + self.level + '   ' + self.wind 
+            weather = self.weather + ' | ' + self.centigrade
+            aqi = str(self.aqi) + ' | ' + self.level + ' | ' + self.wind 
 
             
         self.notice_log()

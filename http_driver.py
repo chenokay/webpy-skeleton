@@ -16,10 +16,8 @@ class HttpDriver():
     def get(self, path):
         try:
             for i in xrange(self.retry_times):
-                print path
                 self.http_handle.connect()
 
-                print path
                 self.http_handle.request('GET', path)
                 res = self.http_handle.getresponse()
 
@@ -31,6 +29,7 @@ class HttpDriver():
                 self.http_handle.close()
 
                 return body, "SUCC"
+            return None, 'FAILURE'
         except Exception, why:
             self.http_handle.close()
             return None, "exception[%s]" %(why)

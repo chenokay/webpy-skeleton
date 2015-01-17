@@ -8,6 +8,8 @@ import model as m
 import sys
 import http_driver 
 import json
+import time
+import datetime
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -76,15 +78,18 @@ class Index:
     def get_region(self, ip):
         ip2region_path = self.ip2region
         ip2region_path = ip2region_path + ip
-        ret = self.http_handle.get(ip2region_path)
-        if ret[1] != 'SUCC':
+        ret, msg = self.http_handle.get(ip2region_path)
+
+        if None == ret:
             return ''
-        kv = json.loads(ret[0])
+        if msg != 'SUCC':
+            return ''
+        kv = json.loads(ret)
 
         if 'retData' in kv:
             if 'city' in kv['retData']:
                 ## discard the last chinese character
-                return kv['retData']['city'][:-1]
+                return kv['retData']['city']
     
         return ''
 
@@ -92,12 +97,15 @@ class Index:
         region2aqi_path = self.region2aqi
         region2aqi_path = region2aqi_path + self.region
 
-        ret = self.http_handle.get(region2aqi_path)
+        ret,msg = self.http_handle.get(region2aqi_path)
 
-        if ret[1] != 'SUCC':
+        if None == '':
             return ''
 
-        kv = json.loads(ret[0])
+        if msg != 'SUCC':
+            return ''
+
+        kv = json.loads(ret)
 
         if 'retData' in kv:
             if 'aqi' in kv['retData']:
@@ -114,12 +122,15 @@ class Index:
         region2code_path = self.region2code
         region2code_path = region2code_path  + self.region
 
-        ret = self.http_handle.get(region2code_path)
+        ret,msg = self.http_handle.get(region2code_path)
 
-        if ret[1] != 'SUCC':
+        if None == '':
             return ''
 
-        kv = json.loads(ret[0])
+        if msg != 'SUCC':
+            return ''
+
+        kv = json.loads(ret)
 
         if 'retData' in kv:
             if 'cityCode' in kv['retData']:
@@ -131,11 +142,14 @@ class Index:
         city2weather_path = self.code2weather
         city2weather_path = city2weather_path + self.regioncode
 
-        ret = self.http_handle.get(city2weather_path)
-        if ret[1] != 'SUCC':
+        ret,msg = self.http_handle.get(city2weather_path)
+
+        if None == '':
+            return ''
+        if msg != 'SUCC':
             return ''
 
-        kv = json.loads(ret[0])
+        kv = json.loads(ret)
 
         if 'retData' in kv:
             if 'weather' in kv['retData']:
@@ -172,6 +186,13 @@ class Index:
             return 'FAIL TO GET AQI'
 
         return 'OK'
+
+    def notice_log(self):
+        ts=int(time.time())
+        d = datetime.datetime.fromtimestamp(ts)
+        timestamp = d.strftime("%Y-%m-%d %H:%M:%S")
+
+        config.logger.info("[%s][%s]" %(timestamp, self.ip))
         
     def GET(self):
         #flash("success", """Welcome! Application code lives in app.py,
@@ -188,7 +209,9 @@ class Index:
             region = self.region
             weather = self.weather + ' ' + self.centigrade
             aqi = str(self.aqi) + ' ' + self.level + '   ' + self.wind 
+
             
+        self.notice_log()
         return render.index(region, weather, aqi)
 
 

@@ -19,6 +19,7 @@ VERSION = "0.0.1"
 
 urls = (
     r'/', 'Index',
+    r'/(.*)', 'static_get',
     )
 
 app = web.application(urls, globals())
@@ -55,6 +56,9 @@ t_globals['app_version'] = lambda: VERSION + ' - ' + config.env
 t_globals['flash_messages'] = flash_messages
 t_globals['render'] = lambda t, *args: render._template(t)(*args)
 
+class static_get:
+    def GET(self, file):
+        web.seeother('/static/'+file)
 
 class Index:
     def __init__(self):
@@ -198,6 +202,11 @@ class Index:
         #flash("success", """Welcome! Application code lives in app.py,
         #models in model.py, tests in test.py, and seed data in seed.py.""")
         self.ip = web.ctx['ip']
+        path = web.ctx['path']
+        param = web.input()
+        print param
+
+        print "path is:%s" %(path)
         ret = self.get_env()
 
         region = '北京'

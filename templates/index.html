@@ -1,8 +1,29 @@
-$def with (region, weather, air_condition)
+$def with (region, weather, air_condition,  rows)
 
 $var region:$region
 $var weather:$weather
 $var air_condition:$air_condition
+
+$def tr(values):
+    <tr>
+    $for ele in values:
+        <td class="fl_g" width="30%">
+        <div class="fl_icn_g" style="width:300px;">
+        <dt><a href=$ele['link']><img src=$ele['img'] width="300" height="300" align="center" alt="" /></a></dt>
+        <dt><a href="http://www.baidu.cn" align="left"><p class="dec" align="left">$ele['desc']</a></dt>
+        <dd> <a href="http://www.baidu.cn"><p class="desc" align="left">$ele['test_word']</p></a> </dd>
+        </div>
+        </td>
+    </tr>
+
+$def table(rows):
+    <table>
+    $for row in rows:
+        $:row
+    </table>
+
+$ data = [{'link':'http://www.baidu.cn', 'img':'/static/images/aa.jpg', 'desc':'good_air_condition', 'test_word':'test_work', 'test_link':'www.baidu.cn'}, {'link':'http://www.baidu.cn', 'img':'/static/images/aa.jpg', 'desc':'good_air_condition', 'test_word':'test_work', 'test_link':'www.baidu.cn'} ]
+$:table([tr(d) for d in rows])
 
 <script>
    <!--
@@ -14,45 +35,8 @@ $var air_condition:$air_condition
 	   window.location = '?product=' + v;
    }
    -->
-</script>    
+</script>
 
-<table cellspacing="0" cellpadding="0" class="fl_tb">
-<tr>
-
-<td class="fl_g" width="30%">
-<div class="fl_icn_g" style="width:300px;">
-<dt><a
-	href="http://detail.m.tmall.com/item.htm?ali_trackid=2%3Amm_106280302_8364503_29040250%3A1419852137_3k8_85399485&id=35496156112&type=2&e=zGU0g6e1d7xnyW5i7tVTF31X3gHkAFfGbIfE4KenF8%2FE1wbNs0tcoVuOVNZBuThHTEax6848rFChWLf2NG7aLvioywjbkKfUt21RUHh2BK%2FUqUibNYItB8vcgwzR1Vv1JbW%2Bt1mZDkxW4qq4LA7rpnMWZdcPZMlzoXMePQgJbtrX8XJH107N&clk1=5a4eba047ff86e16155ef8ca901eae7f#gallery-desc"><img
-	src="/static/images/aa.jpg" width="300" height="300" align="center" alt="" /></a></dt>
-<dt><a href="http://www.baidu.cn" align="left"><p class="dec" align="left">夏普空气净化器</a></dt>
-<dd> <a href="http://www.baidu.cn"><p class="desc" align="left">属性</p></a> </dd>
-</div>
-</td>
-
-
-<td class="fl_g" width="30%">
-<div class="fl_icn_g" style="width:300px;">
-<dt><a
-	href="http://detail.m.tmall.com/item.htm?ali_trackid=2%3Amm_106280302_8364503_29040250%3A1419852137_3k8_85399485&id=35496156112&type=2&e=zGU0g6e1d7xnyW5i7tVTF31X3gHkAFfGbIfE4KenF8%2FE1wbNs0tcoVuOVNZBuThHTEax6848rFChWLf2NG7aLvioywjbkKfUt21RUHh2BK%2FUqUibNYItB8vcgwzR1Vv1JbW%2Bt1mZDkxW4qq4LA7rpnMWZdcPZMlzoXMePQgJbtrX8XJH107N&clk1=5a4eba047ff86e16155ef8ca901eae7f#gallery-desc"><img
-	src="/static/images/aa.jpg" width="300" height="300" align="center" alt="" /></a></dt>
-<dt><a href="http://www.baidu.cn" align="left"><p class="dec" align="left">夏普空气净化器</a></dt>
-<dd> <a href="http://www.baidu.cn"><p class="desc" align="left">属性</p></a> </dd>
-</div>
-</td>
-
-
-<td class="fl_g" width="30%">
-<div class="fl_icn_g" style="width:300px;">
-<dt><a
-	href="http://detail.m.tmall.com/item.htm?ali_trackid=2%3Amm_106280302_8364503_29040250%3A1419852137_3k8_85399485&id=35496156112&type=2&e=zGU0g6e1d7xnyW5i7tVTF31X3gHkAFfGbIfE4KenF8%2FE1wbNs0tcoVuOVNZBuThHTEax6848rFChWLf2NG7aLvioywjbkKfUt21RUHh2BK%2FUqUibNYItB8vcgwzR1Vv1JbW%2Bt1mZDkxW4qq4LA7rpnMWZdcPZMlzoXMePQgJbtrX8XJH107N&clk1=5a4eba047ff86e16155ef8ca901eae7f#gallery-desc"><img
-	src="/static/images/aa.jpg" width="300" height="300" align="center" alt="" /></a></dt>
-<dt><a href="http://www.baidu.cn" align="left"><p class="dec" align="left">夏普空气净化器</a></dt>
-<dd> <a href="http://www.baidu.cn"><p class="desc" align="left">属性</p></a> </dd>
-</div>
-</td>
-
-</tr>
-</table>
 
 <div style="float:left;">
 <div class="pagination">
@@ -62,8 +46,4 @@ $var air_condition:$air_condition
 <div style="float:left;padding:2px 5px 0px 5px"> 到第 <input name="go" id="go" style="border:#FF6699 solid 1px;" type="text" size="4" /> 页</div>
 <div style="float:left;padding:0px 5px 0px 5px"><input name="gobtn" type="button" value="确定" onclick="goto_page();" /></div>
 <div class="clear"></div>
-
-
-
-
 

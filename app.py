@@ -79,6 +79,8 @@ class Index:
         self.aqi = ''
         self.level = ''
 
+        #self.product_db = ProductDb()
+
     def get_region(self, ip):
         ip2region_path = self.ip2region
         ip2region_path = ip2region_path + ip
@@ -204,9 +206,9 @@ class Index:
         self.ip = web.ctx['ip']
         path = web.ctx['path']
         param = web.input()
-        print param
+       # print param
 
-        print "path is:%s" %(path)
+       # print "path is:%s" %(path)
         ret = self.get_env()
 
         region = '北京'
@@ -221,7 +223,34 @@ class Index:
 
             
         self.notice_log()
-        return render.index(region, weather, aqi)
+        ## test
+        rows = []
+
+        ele = {}
+        ele["link"] = "http://www.baidu.cn"
+        ele["img"] = "/static/images/aa.jpg"
+        ele["desc"] = "this is a air condition"
+        ele["test_word"] = "test"
+        ele["test_link"] = "www.baidu.cn"
+
+        rows.append(ele)
+        rows.append(ele)
+        rows.append(ele)
+
+        matrix=[]
+
+        matrix.append(rows)
+        matrix.append(rows)
+        matrix.append(rows)
+        matrix.append(rows)
+        matrix.append(rows)
+        matrix.append(rows)
+        matrix.append(rows)
+        matrix.append(rows)
+        matrix.append(rows)
+        matrix.append(rows)
+
+        return render.index(region, weather, aqi, matrix)
 
 
 # Set a custom internal error message

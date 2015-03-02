@@ -4,26 +4,69 @@ $def with (content)
 <head>
 <meta charset='utf-8'>
 
-<!--<link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet'
-type='text/css'> --!>
 <link rel="stylesheet" type="text/css" href="/static/css/stylesheet.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="/static/css/pygment_trac.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="/static/css/print.css" media="print" />
+<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+
 
 <title>$content.get('title')</title>
 <!-- <title>index</title>-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 </head>
 <body>
 <header>
 <div class="inner">
 <h2>润土网-为你的起居健康而生</h2>
-<!--<h3>为消费者代言</h3>!-->
 <h3>  </h3>
-<!--<a href="" class="button"><small></small>为消费者代言</a>--!>
 <a class="button" style="font-size:18px;">为消费者代言</a>
 </div>
+
+
+
+
 </header>
+
+<style>
+	#barstyle ul
+	{
+		list-style-type:none;
+		margin:0;
+		padding:0;
+		overflow:hidden;
+	}
+	#barstyle li
+	{
+		float:left;
+	}
+	#barstyle a:link, #barstyle a:visited
+	{
+		display:block;
+		width:120px;
+		font-weight:bold;
+		color:#FFFFFF;
+		background-color:#bebebe;
+		text-align:center;
+		padding:4px;
+		text-decoration:none;
+		text-transform:uppercase;
+	}
+	#barstyle a:hover,#barstyle a:active
+	{
+		background-color:#cc0000;
+	}
+</style>
+<ul id="barstyle">
+
+	<li id="barstyle"><a id="barstyle" href="#home">Home</a></li>
+	<li id="barstyle"><a id="barstyle" href="#news">News</a></li>
+	<li id="barstyle"><a id="barstyle" href="#contact">Contact</a></li>
+	<li id="barstyle"><a id="barstyle" href="#about">About</a></li>
+</ul>
+
+
+
 
 <div id="content-wrapper">
 <div class="inner clearfix">
@@ -34,7 +77,6 @@ $:content
 
 </section>
 <aside id="sidebar">
-<!--<p><a href="">欢迎来自$:content.region的朋友</a></p>--!>
 <br align="left">$:content.region</br>
 <br align="left">$:content.weather</br>
 <br align="left">空气:$content.air_condition</br>
